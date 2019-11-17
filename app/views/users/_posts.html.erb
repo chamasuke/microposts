@@ -1,0 +1,18 @@
+<% if posts.any? %>
+  <ul class="list-unstyled">
+    <% posts.each do |post| %>
+      <li class="media">
+        <img class="mr-2 rounded" src="<%= gravatar_url(post.user, { size: 50 }) %>" alt="">
+        <div class="media-body">
+          <div>
+            <%= link_to post.user.name, user_path(post.user) %>
+          </div>
+          <div>
+            <p><%= post.content %></p>
+          </div>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+  <%= paginate posts %>
+<% end %>
